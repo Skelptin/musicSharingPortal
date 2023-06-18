@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Music</title>
+</head>
+<body>
+    <h1>Upload Music</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="file">Music File:</label>
+        <input type="file" id="file" name="file" required><br>
+        <label for="access">Access Level:</label>
+        <select id="access" name="access" required>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="protected">Protected</option>
+        </select><br>
+        <label for="allowed_emails">Allowed Emails (comma-separated):</label>
+        <input type="text" id="allowed_emails" name="allowed_emails"><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

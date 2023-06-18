@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Welcome to the Music Platform</h1>
+    <h2>Upload Music:</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <a href="{% url 'upload' %}">
+            <button type="button">Upload</button>
+          </a>
+          
+    </form>
+    
+
+    <h2>Music Files:</h2>
+    <ul>
+       {% for music_file in music_files %}
+  <li>
+    <audio controls>
+      <source src="{{ music_file.file.url }}" type="{{ music_file.file.content_type }}">
+      Your browser does not support the audio element.
+    </audio>
+
+    {{ music_file.file.name }}
+  </li>
+{% empty %}
+  <li>No music files available.</li>
+{% endfor %}
+    </ul>
+</body>
+</html>
