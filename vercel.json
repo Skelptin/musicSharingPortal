@@ -1,11 +1,14 @@
 {
   "builds": [
     {
-      "src": "musicsharingportal/manage.py",
+      "src": "musicsharingportal/project",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "musicsharingportal/manage.py" }
-  ]
+  ],
+  "env": {
+    "VERCEL_BUILD_COMMAND": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+  }
 }
